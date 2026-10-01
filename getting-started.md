@@ -250,10 +250,10 @@ example directories, set appropriate permissions, and then finally copy the file
 
 :::{code-block} shell
 juju exec -u sackd/0 -- \
-  sudo mkdir /scratch/mpi_example /scratch/apptainer_example
+  sudo mkdir /scratch/mpi_example /scratch/apptainer_example /home/ubuntu/apptainer_cache /home/ubuntu/apptainer_tmp
 
 juju exec -u sackd/0 -- \
-  sudo chown $USER: /scratch/*
+  sudo chown $USER: /scratch/* /home/ubuntu/apptainer_*
 
 juju scp submit_hello.sh mpi_hello_world.c \
   sackd/0:/scratch/mpi_example
@@ -347,7 +347,7 @@ return to that environment from within `sackd/0`, use the `exit`{l=shell} comman
 First, use `juju deploy`{l=shell} to deploy Apptainer:
 
 :::{code-block} shell
-juju deploy apptainer --channel latest/edge
+juju deploy apptainer --channel latest/edge --base "ubuntu@26.04"
 :::
 
 Next, use `juju integrate`{l=shell} to integrate Apptainer with Slurm:
@@ -413,7 +413,10 @@ example directory, and run `apptainer build`:
 
 :::{code-block} shell
 juju ssh sackd/0
+sudo apt install uidmap 
 cd /scratch/apptainer_example
+export APPTAINER_CACHEDIR=/home/ubuntu/apptainer_cache
+export APPTAINER_TMPDIR=/home/ubuntu/apptainer_tmp
 apptainer build workload.sif workload.def
 :::
 
