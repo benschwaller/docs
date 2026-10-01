@@ -409,7 +409,8 @@ you must build the container image from the build recipe. The build recipe file
 _workload.def_ defines the environment and libraries that will be in the container image.
 
 To build the image, log back into to the cluster login node, change to the
-example directory, and run `apptainer build`:
+example directory, set environment variables for the apptainer cache and temporary directories,
+and run `apptainer build`:
 
 :::{code-block} shell
 juju ssh sackd/0
