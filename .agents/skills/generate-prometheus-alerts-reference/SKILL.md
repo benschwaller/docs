@@ -12,10 +12,10 @@ Scans the primary Charmed HPC charm repositories on GitHub for Prometheus alert 
 
 Use the GitHub MCP server tools (`mcp_github_get_file_contents`) to scan the following repositories for Prometheus alert rules:
 
-1. `charmed-hpc/slurm-charms` — look inside each charm directory under `charms/*/src/cos/alert_rules/prometheus/`
-2. `charmed-hpc/sssd-operator` — look under `src/cos/alert_rules/prometheus/`
-3. `charmed-hpc/filesystem-charms` — look inside each charm directory under `charms/*/src/cos/alert_rules/prometheus/`
-4. `charmed-hpc/apptainer-operator` — look under `src/cos/alert_rules/prometheus/`
+1. `canonical/slurm-charms` — look inside each charm directory under `charms/*/src/cos/alert_rules/prometheus/`
+2. `canonical/sssd-operator` — look under `src/cos/alert_rules/prometheus/`
+3. `canonical/filesystem-charms` — look inside each charm directory under `charms/*/src/cos/alert_rules/prometheus/`
+4. `canonical/apptainer-operator` — look under `src/cos/alert_rules/prometheus/`
 
 Alert rule files use the `.rule` or `.rules` extension and are in YAML format.
 
@@ -75,7 +75,7 @@ The generated page MUST follow this exact MyST Markdown structure:
 
 This page lists the Prometheus alert rules provided by Charmed HPC charms. These alerts
 fire when specific conditions are met in your cluster and can be viewed in the Prometheus
-or {term}`Grafana` web interface.
+or Grafana web interface.
 
 See {ref}`howto-manage-integrate-with-cos` for instructions on integrating with COS.
 

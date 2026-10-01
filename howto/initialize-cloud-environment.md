@@ -49,15 +49,15 @@ Follow the instructions below to initialize the `charmed-hpc` machine cloud.
 
 To use LXD as the machine cloud for your Charmed HPC cluster, you will need to have:
 
-* [Installed LXD](https://documentation.ubuntu.com/lxd/en/stable-5.21/installing/)
-* [Initialized LXD](https://documentation.ubuntu.com/lxd/en/stable-5.21/howto/initialize/)
-* [Exposed LXD to the network](https://documentation.ubuntu.com/lxd/en/stable-5.21/howto/server_expose/)
-* [Configured a server trust password](https://documentation.ubuntu.com/lxd/en/stable-5.21/server/#server-core:core.trust_password)
+* [Installed LXD](https://canonical.com/lxd/docs/v5.21/installing/)
+* [Initialized LXD](https://canonical.com/lxd/docs/v5.21/howto/initialize/)
+* [Exposed LXD to the network](https://canonical.com/lxd/docs/v5.21/howto/server_expose/)
+* [Configured a server trust password](https://canonical.com/lxd/docs/v5.21/server/#server-core:core.trust_password)
 
 :::{admonition} New to LXD?
 :class: note
 
-If you're unfamiliar with operating an LXD server, see the [First steps with LXD](https://documentation.ubuntu.com/lxd/en/latest/tutorial/first_steps/)
+If you're unfamiliar with operating an LXD server, see the [First steps with LXD](https://canonical.com/lxd/docs/latest/tutorial/first_steps/)
 tutorial for a high-level introduction to LXD.
 :::
 
@@ -127,6 +127,8 @@ After a few minutes, your LXD cloud controller will become active. The output of
 command should be similar to the following:
 
 :::{terminal}
+:scroll:
+
 juju status -m controller
 
 Model       Controller              Cloud/Region         Version  SLA          Timestamp
@@ -242,6 +244,8 @@ juju bootstrap azure charmed-hpc-controller --constraints "instance-role=auto"
 After a few minutes, your Azure cloud controller will become active. The output of the `juju status`{l=shell} command should be similar to the following:
 
 :::{terminal}
+:scroll:
+
 juju status -m controller
 
 Model       Controller              Cloud/Region  Version  SLA          Timestamp
@@ -364,6 +368,8 @@ After a few minutes, your AWS cloud controller will become active. The output of
 be similar to the following:
 
 :::{terminal}
+:scroll:
+
 juju status -m controller
 
 Model       Controller              Cloud/Region   Version  SLA          Timestamp
@@ -396,7 +402,7 @@ the same GCP project. This may make some processes more complex if you have spec
 To use GCP as the machine cloud for your Charmed HPC cluster, you will need to have:
 
 * [Installed the gcloud CLI](https://cloud.google.com/sdk/docs/install)
-* [Authenticated into the gcloud CLI](https://cloud.google.com/docs/authentication/gcloud#local)
+* [Authenticated into the gcloud CLI](https://cloud.google.com/docs/authentication/gcloud)
 * [Adjusted quotas for suitable Compute Engine machine families](https://cloud.google.com/compute/resource-usage#cpu_quota)
 
 To decide on suitable instance types, it may be useful to refer to GCP's [Machine families resource and comparison guide][machines].
@@ -494,6 +500,8 @@ After a few minutes, your GCP cloud controller will become active. The output of
 be similar to the following:
 
 :::{terminal}
+:scroll:
+
 juju status -m controller
 
 Model       Controller              Cloud/Region     Version  SLA          Timestamp
@@ -725,7 +733,7 @@ To use GKE as the Kubernetes cloud for your Charmed HPC cluster, you will need t
 
 * [Initialized a machine cloud](#howto-initialize-machine-cloud)
 * [Installed the `google-cloud-cli-gke-gcloud-auth-plugin` component](https://cloud.google.com/sdk/docs/components#additional_components)
-* [Authenticated into the gcloud CLI](https://cloud.google.com/docs/authentication/gcloud#local)
+* [Authenticated into the gcloud CLI](https://cloud.google.com/docs/authentication/gcloud)
 
 ### Set up default Service Account
 

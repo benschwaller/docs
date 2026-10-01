@@ -51,13 +51,13 @@ and `cos` with the names of your COS controller and model in the commands below.
 
 ## Deploy OpenTelemetry Collector
 
-First, use `juju deploy`{l=shell} to deploy {term}`OpenTelemetry Collector` in the `slurm`
+First, use `juju deploy`{l=shell} to deploy OpenTelemetry Collector in the `slurm`
 model on your `charmed-hpc` machine cloud:
 
 :::{code-block} shell
 juju deploy opentelemetry-collector \
-  --channel 2/stable \
-  --base "ubuntu@24.04"
+  --channel 0.130/stable \
+  --base "ubuntu@26.04"
 :::
 
 :::{include} /reuse/common/tip-determine-current-juju-model.txt

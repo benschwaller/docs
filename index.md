@@ -1,21 +1,99 @@
 # Charmed HPC
 
 Charmed HPC is a platform for managing high-performance computing clusters. It automates the lifecycle of essential cluster software and processes, such as workload management, shared storage, GPU access, and high-bandwidth networking. This allows operations teams and systems administrators to focus on running workloads rather than maintaining infrastructure.
-<!-- Charmed HPC is a versatile high-performance computing platform that facilitates the set up and maintenance of HPC clusters. This is done by autonomizing the deployment, integration, and life-cycle management of essential cluster software that enables users to run modern workloads at scale.
-
-Charmed HPC spins up turnkey clusters on a variety of cloud platforms to support write-once, run-anywhere user workloads. It also provides the necessary integrations for GPUs, high bandwidth networking, and shared storage.
-
-The platform enables organizations to focus on obtaining key insights and making data-driven decisions by providing an HPC platform that solves the complexity of deploying and operating an HPC cluster at scale. It is directly beneficial to operations teams and system administrators looking to take full advantage of their HPC hardware, available storage configurations, and high bandwidth networking while minimizing cluster downtime for routine maintenance. -->
 
 ---
 
 ## In this documentation
 
-- __Learn more about Charmed HPC:__ [Getting Started tutorial](tutorial-getting-started-with-charmed-hpc), [Underlying projects](reference/underlying-projects-and-dependencies.md)
-- __Workload management:__ [Deploy Slurm](howto/deploy/deploy-slurm.md), [Manage Slurm](howto/manage/manage-slurm.md), [Clean up Slurm](howto/cleanup/cleanup-slurm.md), [Grafana Dashboards](reference/monitoring/grafana-dashboards.md)
-- __Storage and Resources:__ [Deploy shared filesystem](howto/deploy/deploy-shared-filesystem.md), [GPUs](explanation/gpus.md), [GRES](reference/gpus.md), [Interconnects](explanation/interconnects.md)
-- __Security and Identity:__ [Deploy identity provider](howto/deploy/deploy-identity-provider.md), [Hardening guidelines](reference/hardening.md), [Cryptography](explanation/cryptography.md)
-- __Performance:__ [High availability](explanation/high-availability.md), [Benchmarks](reference/performance.md)
+### Getting started
+
+::::{domain}
+:::{slice} Tutorial
+{doc}`Getting started with Charmed HPC <getting-started>`
+:::
+
+:::{slice} Installation
+{doc}`Initialize cloud environment <howto/initialize-cloud-environment>`
+{doc}`Deploy Slurm <howto/deploy/deploy-slurm>`
+{doc}`Deploy Lustre <howto/deploy/deploy-lustre>`
+{doc}`Deploy a shared filesystem <howto/deploy/deploy-shared-filesystem>`
+:::
+::::
+
+### Capabilities and integrations
+
+::::{domain}
+:::{slice} Running workloads
+{doc}`Integrate with Apptainer <howto/integrate/integrate-with-apptainer>`
+{doc}`Use Apptainer <howto/run-workloads/use-apptainer>`
+{doc}`Integrate with a mail server <howto/integrate/integrate-with-email>`
+{doc}`Email notifications for jobs <explanation/job-email-notifications>`
+:::
+
+:::{slice} Configuration and tuning
+{doc}`Manage compute nodes and partitions <howto/manage/manage-compute-nodes>`
+:::
+
+:::{slice} Observability and monitoring
+{doc}`Integrate with COS <howto/integrate/integrate-with-cos>`
+{doc}`Integrate with InfluxDB <howto/integrate/integrate-with-influxdb>`
+{doc}`Grafana dashboards <reference/monitoring/grafana-dashboards>`
+{doc}`Prometheus alerts <reference/monitoring/prometheus-alerts>`
+{doc}`Prometheus metrics <reference/monitoring/prometheus-metrics>`
+{doc}`Loki logs <reference/monitoring/loki-logs>`
+:::
+
+:::{slice} Reliability and availability
+{doc}`High availability <explanation/high-availability>`
+{doc}`Migrate Slurm controller to high availability <howto/manage/migrate-slurmctld-to-high-availability>`
+{doc}`Instance auto-reboots <explanation/reboot-timing>`
+:::
+::::
+
+### Performance, identity, and security
+
+::::{domain}
+:::{slice} Performance
+{doc}`Benchmark results <reference/performance>` slice
+:::
+
+:::{slice} Identity and access
+{doc}`Deploy an identity provider <howto/deploy/deploy-identity-provider>`
+:::
+
+:::{slice} Security and cryptography
+{doc}`Security hardening guidelines <reference/hardening>`
+{doc}`Cryptography and authentication <explanation/cryptography>`
+{doc}`Key rotation <explanation/key-rotation>`
+{doc}`Rotate authentication keys <howto/manage/rotate-authentication-keys>`
+:::
+::::
+
+### Architecture and hardware support
+
+::::{domain}
+:::{slice} Architecture and foundations
+{doc}`Underlying projects and dependencies <reference/underlying-projects-and-dependencies>`
+:::
+
+:::{slice} Hardware support
+{doc}`GPUs <explanation/gpus>`
+{doc}`GPU resource scheduling <reference/gpus>`
+{doc}`Interconnects <explanation/interconnects>`
+{doc}`Lustre <explanation/lustre>`
+{doc}`Public cloud interconnects <reference/interconnects>`
+:::
+::::
+
+### Lifecycle
+
+::::{domain}
+:::{slice} Decommission and clean up
+{doc}`Clean up Slurm <howto/cleanup/cleanup-slurm>`
+{doc}`Clean up cloud resources <howto/cleanup/cleanup-cloud-resources>`
+:::
+::::
 
 ## How this documentation is organized
 
@@ -36,14 +114,15 @@ Charmed HPC is an Ubuntu community project. It's an open source project that war
 
 **Get involved**
 
-* [Support](https://github.com/orgs/charmed-hpc/discussions/categories/support)
+* [Support](https://discourse.ubuntu.com/c/project/hpc/151)
 * [Online chat](https://matrix.to/#/#hpc:ubuntu.com)
-* [Contribute](contributing/index)
+* {ref}`Contribute to the documentation <contributing-to-docs>`
+* {ref}`Contribute to the project <contributing-to-code>`
 
 <!-- **Releases**
 
 * [Release notes](https://discourse.ubuntu.com/c/hpc/151)
-* [Roadmap](https://github.com/orgs/charmed-hpc/projects) -->
+* [Roadmap](https://github.com/orgs/canonical/projects) -->
 
 **Governance and policies**
 

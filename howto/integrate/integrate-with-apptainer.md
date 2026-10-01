@@ -1,5 +1,5 @@
 ---
-relatedlinks: "[Apptainer&#32;admin&#32;documentation](https://apptainer.org/docs/admin/latest/), [Apptainer&#32;(Charmhub)](https://charmhub.io/apptainer), [Apptainer&#32;charm&#32;repository](https://github.com/charmed-hpc/apptainer-operator)"
+relatedlinks: "[Apptainer&#32;admin&#32;documentation](https://apptainer.org/docs/admin/latest/), [Apptainer&#32;(Charmhub)](https://charmhub.io/apptainer), [Apptainer&#32;charm&#32;repository](https://github.com/canonical/apptainer-operator)"
 ---
 
 (howto-manage-integrate-with-apptainer)=
@@ -22,11 +22,11 @@ for a high-level introduction to administering Apptainer.
 
 ## Deploy Apptainer
 
-First, use `juju deploy`{l=shell} to deploy {term}`Apptainer` in the `slurm` model on
+First, use `juju deploy`{l=shell} to deploy Apptainer in the `slurm` model on
 your `charmed-hpc` machine cloud:
 
 :::{code-block} shell
-juju deploy apptainer
+juju deploy apptainer --base "ubuntu@26.04"
 :::
 
 :::{include} /reuse/common/tip-determine-current-juju-model.txt

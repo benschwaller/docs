@@ -13,8 +13,8 @@ cloud managed NFS server on the [`charmed-hpc-terraform`][hpc-tf] repository, wi
 [examples][nfs-tf-examples] on how to deploy the modules.
 :::
 
-[hpc-tf]: https://github.com/charmed-hpc/charmed-hpc-terraform
-[nfs-tf-examples]: https://github.com/charmed-hpc/charmed-hpc-terraform/blob/main/examples
+[hpc-tf]: https://github.com/canonical/charmed-hpc-terraform
+[nfs-tf-examples]: https://github.com/canonical/charmed-hpc-terraform/blob/main/examples
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ cloud managed NFS server on the [`charmed-hpc-terraform`][hpc-tf] repository, wi
 ## Deploy an external filesystem server
 
 External servers that provide a shared filesystem cannot be integrated directly. Instead,
-we can use a [proxy charm](https://documentation.ubuntu.com/juju/latest/reference/charm/#proxy-charm) in order to expose
+we can use a [proxy charm](https://canonical.com/juju/docs/juju-cli/latest/reference/charm/#proxy-charm) in order to expose
 the required information to applications managed by Juju.
 
 :::::::{tab-set}
@@ -69,7 +69,7 @@ First, launch a virtual machine using [LXD](https://canonical.com/lxd):
 :::{code-block} shell
 $ snap install lxd
 $ lxd init --auto
-$ lxc launch ubuntu:24.04 nfs-server --vm
+$ lxc launch ubuntu:26.04 nfs-server --vm
 $ lxc shell nfs-server
 :::
 
@@ -110,6 +110,7 @@ expose the externally managed server inside a Juju model.
 
 :::{code-block} shell
 juju deploy nfs-server-proxy \
+  --base "ubuntu@26.04" \
   --channel latest/edge \
   --config hostname=<server hostname> \
   --config path=<exported path> \
@@ -120,6 +121,8 @@ juju deploy nfs-server-proxy \
 
 ::::::{tab-item} CephFS
 
+CephFS is a POSIX-compliant file system interface that runs on top of a Ceph storage cluster.
+
 To integrate with an external CephFS share, you will require:
  - The unique identifier of the cluster (commonly known as fsid).
  - The name of the filesystem within the Ceph cluster.
@@ -128,16 +131,16 @@ To integrate with an external CephFS share, you will require:
  - The username with permissions to access the filesystem.
  - The cephx key for the username.
 
-Here, a Ceph cluster will be set up using [MicroCeph][ceph].
+Here, a Ceph cluster will be set up using [MicroCeph](https://canonical.com/ceph/docs/stable/), 
+a tool that simplifies deployment and management of Ceph storage, 
+in both standalone and charmed environments, using Juju.
 
-[ceph]: https://canonical-microceph.readthedocs-hosted.com/en/v19.2.0-squid
-
-First, launch a virtual machine using [LXD](https://ubuntu.com/lxd):
+First, launch a virtual machine using [LXD](https://canonical.com/lxd):
 
 :::{code-block} shell
 snap install lxd
 lxd init --auto
-lxc launch ubuntu:24.04 cephfs-server --vm
+lxc launch ubuntu:26.04 cephfs-server --vm
 lxc shell cephfs-server
 :::
 
@@ -148,7 +151,7 @@ Inside the LXD virtual machine, set up MicroCeph to export a Ceph filesystem.
 ln -s /bin/true /usr/local/bin/udevadm
 apt-get -y update
 apt-get -y install ceph-common jq
-snap install microceph
+snap install microceph --channel tentacle/stable
 
 # Bootstrap Microceph
 microceph cluster bootstrap
@@ -207,6 +210,7 @@ expose the externally managed Ceph filesystem inside a Juju model.
 
 :::{code-block} shell
 juju deploy cephfs-server-proxy \
+  --base "ubuntu@26.04" \
   --channel latest/edge \
   --config fsid=<value of $FSID> \
   --config sharepoint=cephfs:/ \
@@ -225,6 +229,7 @@ To add the `filesystem-client` charm, which mounts a shared filesystem to the cl
 
 :::{code-block} shell
 juju deploy filesystem-client \
+  --base "ubuntu@26.04" \
   --channel latest/edge \
   --config mountpoint='/scratch' \
   --config noexec=true
@@ -232,7 +237,7 @@ juju deploy filesystem-client \
 
 The `mountpoint` configuration represents the path that the filesystem will be mounted onto.
 
-`filesystem-client` is a [subordinate charm](https://documentation.ubuntu.com/juju/latest/reference/charm/#subordinate-charm)
+`filesystem-client` is a [subordinate charm](https://canonical.com/juju/docs/juju-cli/latest/reference/charm/#subordinate-charm)
 that can automatically mount any shared filesystems for the application related with it.
 In this case, we will relate it to the `sackd` and `slurmd` applications to have shared storage
 between all the login and compute nodes in the cluster:
