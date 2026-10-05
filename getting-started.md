@@ -199,7 +199,7 @@ juju integrate scratch login
 juju integrate scratch compute
 :::
 
-Your Charmed HPC cluster will become active within a few minutes. The output of the
+Your Charmed HPC cluster will become active in about ten minutes, but exact timing will be dependent on your specific hardware. The output of the
 `juju status`{l=shell} will be similar to the following:
 
 :::{terminal}
@@ -507,7 +507,7 @@ In this tutorial, you:
 - Deployed and integrated Slurm and a shared filesystem
 - Launched an MPI batch job and saw cross-node communication results
 - Built a container image with Apptainer and used it to run a batch job and
-- generate a bar plot
+- Generated a bar plot
 
 Now that you have completed the tutorial, if you would like to completely remove the
 virtual machine, return to your local terminal and `multipass delete` the virtual
