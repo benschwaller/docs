@@ -419,7 +419,6 @@ and run `apptainer build`:
 
 :::{code-block} shell
 juju ssh login/0
-sudo apt install uidmap 
 cd /scratch/apptainer_example
 export APPTAINER_CACHEDIR=/home/ubuntu/apptainer_cache
 export APPTAINER_TMPDIR=/home/ubuntu/apptainer_tmp
